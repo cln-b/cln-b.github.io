@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0a;
+    font-family: "Google Sans Code", "Courier New", monospace;
+    padding: 20px;
+  }
+
+  #grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 4px;
+  }
+
+  .thumb {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #111;
+    overflow: hidden;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s;
+  }
+
+  .thumb img.loading {
+    opacity: 0.4;
+  }
+
+  .thumb span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 8px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: #ccc;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,0.05);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div id="grid"></div>
+<script>
+const channels = [
+  { cid: "sky_showcase_de", title: "Sky Showcase" },
+  { cid: "skyD_sky_1", title: "Sky One" },
+  { cid: "skyD_universal", title: "Universal TV" },
+  { cid: "skyD_13th_street", title: "13th Street" },
+  { cid: "skyD_sky_krimi", title: "Sky Krimi" },
+  { cid: "skyD_sky_atlantic", title: "Sky Atlantic" },
+  { cid: "skyD_syfy", title: "Sky Sci-Fi" },
+  { cid: "sky_crime_de", title: "Sky Crime" },
+  { cid: "sky_documentaries_de", title: "Sky Documentaries" },
+  { cid: "sky_nature_de", title: "Sky Nature" },
+
+  { cid: "sky_cinema_ch", title: "Sky Cinema Switzerland" },
+
+  { cid: "skyD_sky_cinema", title: "Sky Cinema Premiere" },
+  { cid: "skyD_sky_cinema_special", title: "Sky Cinema Highlights" },
+  { cid: "skyD_sky_cinema_action", title: "Sky Cinema Action" },
+  { cid: "skyD_sky_cinema_family", title: "Sky Cinema Family" },
+  { cid: "skyD_sky_cinema_hits", title: "Sky Cinema Classics" },
+
+  { cid: "sky_sport_news_de", title: "Sky Sport News" },
+  { cid: "sky_sport_top_event_de", title: "Sky Sport Top Event" },
+  { cid: "sky_sport_bundesliga_de", title: "Sky Sport Bundesliga" },
+  { cid: "sky_sport_f1_de", title: "Sky Sport F1" },
+  { cid: "sky_sport_premier_league_de", title: "Sky Sport Premier League" },
+  { cid: "sky_sport_mix_de", title: "Sky Sport Mix" },
+  { cid: "sky_sport_tennis_de", title: "Sky Sport Tennis" },
+  { cid: "sky_sport_golf_de", title: "Sky Sport Golf" },
+  { cid: "sky_sport_uhd", title: "Sky Sport UHD" },
+  { cid: "sky_sport_bundesliga_uhd", title: "Sky Sport Bundesliga UHD" },
+
+  { cid: "sky_sport_austria", title: "Sky Sport Austria 1" },
+
+  { cid: "sky_bundesliga_1", title: "Sky Sport Bundesliga 1" },
+  { cid: "sky_bundesliga_2", title: "Sky Sport Bundesliga 2" },
+  { cid: "sky_bundesliga_3", title: "Sky Sport Bundesliga 3" },
+  { cid: "sky_bundesliga_4", title: "Sky Sport Bundesliga 4" },
+  { cid: "sky_bundesliga_5", title: "Sky Sport Bundesliga 5" },
+  { cid: "sky_bundesliga_6", title: "Sky Sport Bundesliga 6" },
+  { cid: "sky_bundesliga_7", title: "Sky Sport Bundesliga 7" },
+  { cid: "sky_bundesliga_8", title: "Sky Sport Bundesliga 8" },
+  { cid: "sky_bundesliga_9", title: "Sky Sport Bundesliga 9" },
+  { cid: "sky_bundesliga_10", title: "Sky Sport Bundesliga 10" },
+
+  { cid: "sky_sport_1_de", title: "Sky Sport 1" },
+  { cid: "sky_sport_2_de", title: "Sky Sport 2" },
+  { cid: "sky_sport_3_de", title: "Sky Sport 3" },
+  { cid: "sky_sport_4_de", title: "Sky Sport 4" },
+  { cid: "sky_sport_5_de", title: "Sky Sport 5" },
+  { cid: "sky_sport_6_de", title: "Sky Sport 6" },
+  { cid: "sky_sport_7_de", title: "Sky Sport 7" },
+  { cid: "sky_sport_8_de", title: "Sky Sport 8" },
+  { cid: "sky_sport_9_de", title: "Sky Sport 9" },
+  { cid: "sky_sport_10_de", title: "Sky Sport 10" },
+
+  { cid: "sky_sport_austria_2", title: "Sky Sport Austria 2" },
+  { cid: "sky_sport_austria_3", title: "Sky Sport Austria 3" },
+  { cid: "sky_sport_austria_4", title: "Sky Sport Austria 4" },
+
+  { cid: "skyD_tnt_serie", title: "Warner TV Serie" },
+  { cid: "skyD_tnt_comedy", title: "Warner TV Comedy" },
+  { cid: "skyD_history", title: "History Channel" },
+  { cid: "skyD_natgeo", title: "National Geographic" },
+  { cid: "skyD_natgeo_wild", title: "National Geographic Wild" },
+
+  { cid: "skyD_tnt_film", title: "Warner TV Film" },
+
+  { cid: "skyD_boomerang", title: "Cartoonito" },
+
+  { cid: "skynews-intl", title: "Sky News" },
+  { cid: "sky_tg24_it", title: "Sky TG24" },
+];
+
+const INTERVAL = 20000;
+const grid = document.getElementById("grid");
+
+for (const { cid, title } of channels) {
+  const wrap = document.createElement("div");
+  wrap.className = "thumb";
+
+  const img = document.createElement("img");
+  img.alt = title;
+
+  const cap = document.createElement("span");
+  cap.textContent = title;
+
+  wrap.append(img, cap);
+  grid.appendChild(wrap);
+
+  const tick = () => {
+    img.classList.add("loading");
+    const next = new Image();
+    next.src = `https://thumb.zattic.com/${cid}/1280x720.jpg?${Date.now()}`;
+    next.onload = () => { img.src = next.src; img.classList.remove("loading"); };
+    next.onerror = () => img.classList.remove("loading");
+    setTimeout(tick, INTERVAL);
+  };
+  tick();
+}
+</script>
+</body>
+</html>
