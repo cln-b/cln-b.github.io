@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .imggrid {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .thumb {
+                padding-block: 1.75px;
+                padding-inline: 2.5px;
+                text-align: center;
+            }
+            .thumb img {
+                width: 147px;
+                height: 64px;
+                object-fit: contain;
+                display: block;
+            }
+        </style>
+        <script>
+            const replacements = {
+                "IESVC1042_f": "IESVC1042_f_new",
+                "IESVC1110_f": "IESVC1110_f_plus",
+                "IESVC1120_f": "IESVC1120_f_new",
+                "IESVC1128_f": "IESVC1128_f_new",
+                "IESVC1135_f": "IESVC1135_f_new",
+                "IESVC1156_f": "IESVC1156_f_new",
+                "IESVC1164_f": "IESVC1164_f_new",
+                "IESVC1168_f": "IESVC1168_f_mix",
+                "IESVC1192_f": "IESVC1192_f_new",
+                "IESVC1219_f": "IESVC1219_f_new",
+                "IESVC1225_f": "IESVC1225_f_new",
+                "IESVC1226_f": "IESVC1226_f_new",
+                "IESVC1246_f": "IESVC1246_f_plus",
+                "IESVC1247_f": "IESVC1247_new",
+                "IESVC1251_f": "IESVC1251_new",
+                "IESVC1307_f": "IESVC1307_TNT",
+                "IESVC1308_f": "IESVC1308_TNT",
+                "IESVC1309_f": "IESVC1309_TNT",
+                "IESVC1310_f": "IESVC1310_TNT",
+                "IESVC1311_f": "IESVC1311_TNT",
+                "IESVC1312_f": "IESVC1312_TNT",
+                "IESVC1313_f": "IESVC1313_TNT",
+                "IESVC1314_f": "IESVC1314_TNT"
+            };
+    
+            let usingNewImages = false;
+
+            function toggleImages() {
+                document.querySelectorAll(".thumb img").forEach(img => {
+                    for (const [oldName, newName] of Object.entries(replacements)) {
+    
+                        if (!usingNewImages && img.src.includes(oldName + ".png")) {
+                            img.src = img.src.replace(oldName, newName);
+                        }
+    
+                        else if (usingNewImages && img.src.includes(newName + ".png")) {
+                            img.src = img.src.replace(newName, oldName);
+                        }
+                    }
+                });
+    
+                usingNewImages = !usingNewImages;
+    
+                document.getElementById("toggleBtn").textContent =
+                    usingNewImages ? "Restore old images" : "Load new images";
+            }
+        </script>
+    </head>
+    <body bgcolor="grey">
+        <div style="height: 25px" class="controls">
+            <button id="toggleBtn" onclick="toggleImages()">Load new images</button>
+        </div>
+        <div class="imggrid" id="grid"></div>
+        <script>
+            const channels = Array.from({ length: 431 }, (_, i) => {
+                const n = 1000 + i;
+                return { cid: `IESVC${n}`, title: `IESVC${n}` };
+            });
+                
+            const grid = document.getElementById("grid");
+            
+            for (const { cid, title } of channels) {
+                const wrap = document.createElement("div");
+                wrap.className = "thumb";
+                
+                const img = document.createElement("img");
+                
+                wrap.appendChild(img);
+                grid.appendChild(wrap);
+                
+                img.src = `https://staticqbr-prod-ie.gnp.cloud.virginmediatv.ie/image-service/ImagesEPG/EventImages/${cid}_f.png`;
+                img.title = `${cid}`;
+                img.alt = ``;
+            }
+        </script>
+    </body>
+</html>

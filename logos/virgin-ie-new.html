@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .imggrid {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .thumb {
+                padding-block: 1.75px;
+                padding-inline: 2.5px;
+                text-align: center;
+            }
+            .thumb img {
+                width: 147px;
+                height: 64px;
+                object-fit: contain;
+                display: block;
+            }
+        </style>
+    </head>
+    <body bgcolor="grey">
+        <div style="height: 25px"></div>
+        <div class="imggrid" id="grid"></div>
+        <script>
+            const channels = Array.from({ length: 431 }, (_, i) => {
+                const n = 1000 + i;
+                return { cid: `IESVC${n}`, title: `IESVC${n}` };
+            });
+            
+            const grid = document.getElementById("grid");
+            
+            for (const { cid, title } of channels) {
+                const wrap = document.createElement("div");
+                wrap.className = "thumb";
+                
+                const img = document.createElement("img");
+                
+                wrap.appendChild(img);
+                grid.appendChild(wrap);
+                
+                img.src = `https://staticqbr-prod-ie.gnp.cloud.virginmediatv.ie/image-service/intent/${cid}/channelLogo?type=channel`;
+                img.title = `${cid}`;
+                img.alt = ``;
+            }
+        </script>
+    </body>
+</html>
+
+
