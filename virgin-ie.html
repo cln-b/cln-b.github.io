@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<style>
+  .imggrid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .thumb {
+    text-align: center;
+    padding-inline: 7.375px;
+  }
+  .thumb img {
+    width: 341px;
+    height: 192px;
+    object-fit: contain;
+    display: block;
+  }
+  .thumb span {
+    color: white;
+    font-family: sans-serif;
+    font-size: 14px;
+  }
+</style>
+<body bgcolor="grey">
+<div class="imggrid" id="grid"></div>
+<script>
+const channels = Array.from({ length: 431 }, (_, i) => {
+  const n = 1000 + i;
+  return { cid: `IESVC${n}`, title: `IESVC${n}` };
+});
+
+const INTERVAL = 20000;
+
+const grid = document.getElementById("grid");
+
+for (const { cid, title } of channels) {
+  const wrap = document.createElement("div");
+  wrap.className = "thumb";
+
+  const img = document.createElement("img");
+  const cap = document.createElement("span");
+  cap.textContent = title;
+
+  wrap.appendChild(img);
+  wrap.appendChild(cap);
+  grid.appendChild(wrap);
+
+  const refresh = () => {
+    img.src = `https://staticqbr-prod-ie.gnp.cloud.virginmediatv.ie/image-service/latest/${cid}?w=800&t=${Date.now()}`;
+
+    setTimeout(refresh, INTERVAL);
+  };
+  refresh();
+}
+</script>
+</body>
+</html>
