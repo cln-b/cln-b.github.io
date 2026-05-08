@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Logos - Virgin IE (alt)</title>
         <style>
             .imggrid {
                 display: flex;
                 flex-wrap: wrap;
             }
-            .thumb {
+            img {
                 padding-block: 1.75px;
                 padding-inline: 2.5px;
-                text-align: center;
-            }
-            .thumb img {
                 width: 147px;
                 height: 64px;
                 object-fit: contain;
@@ -31,14 +29,8 @@
             const grid = document.getElementById("grid");
             
             for (const { cid, title } of channels) {
-                const wrap = document.createElement("div");
-                wrap.className = "thumb";
-                
                 const img = document.createElement("img");
-                
-                wrap.appendChild(img);
-                grid.appendChild(wrap);
-                
+                grid.appendChild(img);
                 img.src = `https://staticqbr-prod-ie.gnp.cloud.virginmediatv.ie/image-service/intent/${cid}/channelLogo?type=channel`;
                 img.title = `${cid}`;
                 img.alt = ``;
