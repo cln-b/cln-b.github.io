@@ -1,11 +1,11 @@
 ## Live channel previews
-* [Sky DE](/previews/sky-de)
-* [Virgin IE](/previews/virgin-ie)
+* [Sky DE](https://cln-b.github.io/previews/sky-de)
+* [Virgin IE](https://cln-b.github.io/previews/virgin-ie)
 
 ## Service logos
-* [Sky UK & IE](/logos/sky)
-* [Virgin IE](/logos/virgin-ie)
-* [Virgin IE](/logos/virgin-ie-new) (alternate URL format, excluding tentative channels)
+* [Sky UK & IE](https://cln-b.github.io/logos/sky)
+* [Virgin IE](https://cln-b.github.io/logos/virgin-ie)
+* [Virgin IE](https://cln-b.github.io/logos/virgin-ie-new) (alternate URL format, excluding tentative channels)
 
 ## Live channel lists
 * [Virgin IE](https://docs.google.com/spreadsheets/d/e/2PACX-1vRH75Jx3NPhifqzONHH8RMWxJXxPM2t5nIfXzgJe4qj3hgL21gNIuOnzBDLbSmvpCsYyzitTbf0XgEE/pubhtml?gid=444506996&single=true)
