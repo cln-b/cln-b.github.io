@@ -26,7 +26,7 @@ jobs:
           curl -s 'https://spark-prod-ie.gnp.cloud.virginmediatv.ie/eng/web/linear-service/v1/channels?cityId=131&language=en&productClass=Orion-DASH' | jq . > "$tmp"
 
           new_crc=$(cksum < "$tmp" | awk '{print $1}')
-          latest=$(ls -1 scraper/Virgin\ IE/*.xml 2>/dev/null | sort | tail -n1)
+          latest=$(ls -1 scraper/Virgin\ IE/*.json 2>/dev/null | sort | tail -n1)
           if [ -n "$latest" ]; then
             if cmp -s "$tmp" "$latest"; then
               echo "No changes detected"
@@ -38,14 +38,29 @@ jobs:
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/Virgin IE/TV360_${timestamp}_(${new_crc}).json"
 
+          echo "CHANGED=${CHANGED}Virgin IE," >> $GITHUB_ENV
+
       - name: Fetch Virgin Media UK
         run: |
           mkdir -p "scraper/Virgin UK"
-          timestamp=$(date '+%Y-%m-%d_%H%M%S')
-          tmp="scraper/Virgin UK/TV360_${timestamp}.json"
+          tmp=$(mktemp)
+
           curl -s 'https://spark-prod-gb.gnp.cloud.virgintvgo.virginmedia.com/eng/web/linear-service/v1/channels?cityId=40980&language=en&productClass=Orion-DASH' | jq . > "$tmp"
-          crc=$(cksum < "$tmp" | awk '{print $1}')
-          mv "$tmp" "scraper/Virgin UK/TV360_${timestamp}_($crc).json"
+
+          new_crc=$(cksum < "$tmp" | awk '{print $1}')
+          latest=$(ls -1 scraper/Virgin\ UK/*.json 2>/dev/null | sort | tail -n1)
+          if [ -n "$latest" ]; then
+            if cmp -s "$tmp" "$latest"; then
+              echo "No changes detected"
+              rm "$tmp"
+              exit 0
+            fi
+          fi
+
+          timestamp=$(date '+%Y-%m-%d_%H%M%S')
+          mv "$tmp" "scraper/Virgin UK/TV360_${timestamp}_(${new_crc}).json"
+
+          echo "CHANGED=${CHANGED}Virgin UK," >> $GITHUB_ENV
 
       - name: Fetch DVB-I
         run: |
@@ -59,8 +74,7 @@ jobs:
           new_crc=$(cksum < "$tmp" | awk '{print $1}')
           latest=$(ls -1 scraper/DVB-I/*.xml 2>/dev/null | sort | tail -n1)
           if [ -n "$latest" ]; then
-            old_crc=$(cksum < "$latest" | awk '{print $1}')
-            if [ "$new_crc" = "$old_crc" ]; then
+            if cmp -s "$tmp" "$latest"; then
               echo "No changes detected"
               rm "$tmp"
               exit 0
@@ -70,21 +84,63 @@ jobs:
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/DVB-I/DVB-I_${timestamp}_(${new_crc}).xml"
 
+          echo "CHANGED=${CHANGED}DVB-I," >> $GITHUB_ENV
+
       - name: Fetch Freely variants
         run: |
-          mkdir -p "scraper/Freely/Manchester" "scraper/Freely/NI" "scraper/Freely/Scotland" "scraper/Freely/Wales"
-          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64377' -o "scraper/Freely/Manchester/FV-Manc_64377_$(date '+%Y-%m-%d_%H%M%S').json"
-          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64969' -o "scraper/Freely/Manchester/Freely-Manc_64969_$(date '+%Y-%m-%d_%H%M%S').json"
-          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64424' -o "scraper/Freely/NI/FV-NI_64424_$(date '+%Y-%m-%d_%H%M%S').json"
-          curl -s 'https://www.freely.co.uk/api/channel-list?nid=65016' -o "scraper/Freely/NI/Freely-NI_65016_$(date '+%Y-%m-%d_%H%M%S').json"
-          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64409' -o "scraper/Freely/Scotland/FV-Scot_64409_$(date '+%Y-%m-%d_%H%M%S').json"
-          curl -s 'https://www.freely.co.uk/api/channel-list?nid=65001' -o "scraper/Freely/Scotland/Freely-Scot_65001_$(date '+%Y-%m-%d_%H%M%S').json"
-          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64418' -o "scraper/Freely/Wales/FV-Wal_64418_$(date '+%Y-%m-%d_%H%M%S').json"
-          curl -s 'https://www.freely.co.uk/api/channel-list?nid=65010' -o "scraper/Freely/Wales/Freely-Wal_65010_$(date '+%Y-%m-%d_%H%M%S').json"
+          fetch_freely() {
+            region="$1"
+            name="$2"
+            nid="$3"
+
+            mkdir -p "scraper/Freely/$region"
+
+            tmp=$(mktemp)
+
+            curl -s "https://www.freely.co.uk/api/channel-list?nid=$nid" > "$tmp"
+
+            latest=$(ls -1 scraper/Freely/"$region"/"${name}"_*.json 2>/dev/null | sort | tail -n1)
+
+            if [ -n "$latest" ]; then
+              if cmp -s "$tmp" "$latest"; then
+                echo "No changes detected for $name"
+                rm "$tmp"
+                return
+              fi
+            fi
+
+            new_crc=$(cksum < "$tmp" | awk '{print $1}')
+            timestamp=$(date '+%Y-%m-%d_%H%M%S')
+
+            mv "$tmp" "scraper/Freely/$region/${name}_${nid}_${timestamp}_(${new_crc}).json"
+          }
+
+          fetch_freely "Manchester" "FV-Manc" "64377"
+          fetch_freely "Manchester" "Freely-Manc" "64969"
+
+          fetch_freely "NI" "FV-NI" "64424"
+          fetch_freely "NI" "Freely-NI" "65016"
+
+          fetch_freely "Scotland" "FV-Scot" "64409"
+          fetch_freely "Scotland" "Freely-Scot" "65001"
+
+          fetch_freely "Wales" "FV-Wal" "64418"
+          fetch_freely "Wales" "Freely-Wal" "65010"
+
+          echo "CHANGED=${CHANGED}Freely," >> $GITHUB_ENV
 
       - name: Commit
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
           git add -A
-          git diff --staged --quiet || (git commit -m "channel data $(date '+%Y-%m-%d %H:%M')" && git push)
+
+          if git diff --staged --quiet; then
+            echo "No staged changes"
+            exit 0
+          fi
+
+          changes=$(echo "$CHANGED" | sed 's/, $//')
+
+          git commit -m "Update $changes"
+          git push
