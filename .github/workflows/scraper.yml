@@ -28,7 +28,8 @@ jobs:
           new_crc=$(cksum < "$tmp" | awk '{print $1}')
           latest=$(ls -1 scraper/Virgin\ IE/*.json 2>/dev/null | sort | tail -n1)
           if [ -n "$latest" ]; then
-            if cmp -s "$tmp" "$latest"; then
+            old_crc=$(cksum < "$latest" | awk '{print $1}')
+            if [ "$new_crc" = "$old_crc" ]; then
               echo "No changes detected"
               rm "$tmp"
               exit 0
@@ -50,7 +51,8 @@ jobs:
           new_crc=$(cksum < "$tmp" | awk '{print $1}')
           latest=$(ls -1 scraper/Virgin\ UK/*.json 2>/dev/null | sort | tail -n1)
           if [ -n "$latest" ]; then
-            if cmp -s "$tmp" "$latest"; then
+            old_crc=$(cksum < "$latest" | awk '{print $1}')
+            if [ "$new_crc" = "$old_crc" ]; then
               echo "No changes detected"
               rm "$tmp"
               exit 0
@@ -74,7 +76,8 @@ jobs:
           new_crc=$(cksum < "$tmp" | awk '{print $1}')
           latest=$(ls -1 scraper/DVB-I/*.xml 2>/dev/null | sort | tail -n1)
           if [ -n "$latest" ]; then
-            if cmp -s "$tmp" "$latest"; then
+            old_crc=$(cksum < "$latest" | awk '{print $1}')
+            if [ "$new_crc" = "$old_crc" ]; then
               echo "No changes detected"
               rm "$tmp"
               exit 0
@@ -102,7 +105,8 @@ jobs:
             latest=$(ls -1 scraper/Freely/"$region"/"${name}"_*.json 2>/dev/null | sort | tail -n1)
 
             if [ -n "$latest" ]; then
-              if cmp -s "$tmp" "$latest"; then
+            old_crc=$(cksum < "$latest" | awk '{print $1}')
+            if [ "$new_crc" = "$old_crc" ]; then
                 echo "No changes detected for $name"
                 rm "$tmp"
                 return
