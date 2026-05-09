@@ -1,0 +1,68 @@
+name: channel list scraper
+on:
+  schedule:
+    - cron: "59 23 * * *"
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tidy
+        run: sudo apt-get install -y tidy
+
+      - name: Fetch Virgin Media IE
+        run: |
+          mkdir -p Virgin
+          timestamp=$(date '+%Y-%m-%d_%H%M%S')
+          tmp="Virgin/TV360_${timestamp}.json"
+          curl -s 'https://spark-prod-ie.gnp.cloud.virginmediatv.ie/eng/web/linear-service/v1/channels?cityId=131&language=en&productClass=Orion-DASH' | jq . > "$tmp"
+          crc=$(cksum < "$tmp" | awk '{print $1}')
+          mv "$tmp" "Virgin/TV360_${timestamp}_($crc).json"
+
+      - name: Fetch Virgin Media UK
+        run: |
+          mkdir -p "Virgin UK"
+          timestamp=$(date '+%Y-%m-%d_%H%M%S')
+          tmp="Virgin UK/TV360_${timestamp}.json"
+          curl -s 'https://spark-prod-gb.gnp.cloud.virgintvgo.virginmedia.com/eng/web/linear-service/v1/channels?cityId=40980&language=en&productClass=Orion-DASH' | jq . > "$tmp"
+          crc=$(cksum < "$tmp" | awk '{print $1}')
+          mv "$tmp" "Virgin UK/TV360_${timestamp}_($crc).json"
+
+      - name: Fetch DVB-I
+        run: |
+          mkdir -p DVB-I
+          timestamp=$(date '+%Y-%m-%d_%H%M%S')
+          tmp="DVB-I/DVB-I_${timestamp}.xml"
+          curl -s 'https://dvbipoc.private.saorview.ie/dvb-i/api/serviceList/saorview?image_variant=16x9_colour' -o "$tmp"
+          sed -i -E 's/<!--Elapsed time: [0-9]+\.[0-9A-Za-z]*-*[0-9A-Za-z]*-->//g' "$tmp"
+          tidy --tidy-mark no --quiet yes --indent yes --wrap 0 --force-output yes \
+            --markup yes --preserve-entities yes --newline LF --add-xml-decl no \
+            --show-warnings no --show-errors 0 --write-back yes -utf8 -xml "$tmp" || true
+          tidy --tidy-mark no --quiet yes --indent yes --wrap 0 --force-output yes \
+            --markup yes --preserve-entities yes --newline LF --add-xml-decl no \
+            --show-warnings no --show-errors 0 --write-back yes -utf8 -xml "$tmp" || true
+          crc=$(cksum < "$tmp" | awk '{print $1}')
+          mv "$tmp" "DVB-I/DVB-I_${timestamp}_($crc).xml"
+
+      - name: Fetch Freely variants
+        run: |
+          mkdir -p Freely-Manc Freely-NI Freely-Scot Freely-Wal
+          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64377' -o "Freely-Manc/FV-Manc_64377_$(date '+%Y-%m-%d_%H%M%S').json"
+          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64969' -o "Freely-Manc/Freely-Manc_64969_$(date '+%Y-%m-%d_%H%M%S').json"
+          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64424' -o "Freely-NI/FV-NI_64424_$(date '+%Y-%m-%d_%H%M%S').json"
+          curl -s 'https://www.freely.co.uk/api/channel-list?nid=65016' -o "Freely-NI/Freely-NI_65016_$(date '+%Y-%m-%d_%H%M%S').json"
+          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64409' -o "Freely-Scot/FV-Scot_64409_$(date '+%Y-%m-%d_%H%M%S').json"
+          curl -s 'https://www.freely.co.uk/api/channel-list?nid=65001' -o "Freely-Scot/Freely-Scot_65001_$(date '+%Y-%m-%d_%H%M%S').json"
+          curl -s 'https://www.freely.co.uk/api/channel-list?nid=64418' -o "Freely-Wal/FV-Wal_64418_$(date '+%Y-%m-%d_%H%M%S').json"
+          curl -s 'https://www.freely.co.uk/api/channel-list?nid=65010' -o "Freely-Wal/Freely-Wal_65010_$(date '+%Y-%m-%d_%H%M%S').json"
+
+      - name: Commit
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add -A
+          git diff --staged --quiet || (git commit -m "channel data $(date '+%Y-%m-%d %H:%M')" && git push)
