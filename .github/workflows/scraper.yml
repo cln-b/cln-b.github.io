@@ -1,4 +1,8 @@
 name: channel list scraper
+
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "59 23 * * *"
