@@ -1,56 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<title>Live previews - Virgin IE</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  .imggrid {
-    display: flex;
-    flex-wrap: wrap;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0a;
+    font-family: "Google Sans Code", "Courier New", monospace;
+    padding: 20px;
+  }
+  #grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 4px;
   }
   .thumb {
-    text-align: center;
-    padding-inline: 7.375px;
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #111;
+    overflow: hidden;
   }
+  .thumb.dead { display: none; }
   .thumb img {
-    width: 341px;
-    height: 192px;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
+    transition: opacity 0.3s;
+  }
+  .thumb img.loading {
+    opacity: 0.4;
   }
   .thumb span {
-    color: white;
-    font-family: sans-serif;
-    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 8px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: #ccc;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,0.05);
+    pointer-events: none;
   }
 </style>
-<body bgcolor="grey">
-<div class="imggrid" id="grid"></div>
+</head>
+<body>
+<div id="grid"></div>
 <script>
 const channels = Array.from({ length: 431 }, (_, i) => {
   const n = 1000 + i;
   return { cid: `IESVC${n}`, title: `IESVC${n}` };
 });
-
 const INTERVAL = 20000;
-
 const grid = document.getElementById("grid");
 
 for (const { cid, title } of channels) {
   const wrap = document.createElement("div");
   wrap.className = "thumb";
-
   const img = document.createElement("img");
+  img.alt = title;
   const cap = document.createElement("span");
   cap.textContent = title;
-
-  wrap.appendChild(img);
-  wrap.appendChild(cap);
+  wrap.append(img, cap);
   grid.appendChild(wrap);
 
-  const refresh = () => {
-    img.src = `https://staticqbr-prod-ie.gnp.cloud.virginmediatv.ie/image-service/latest/${cid}?w=800&t=${Date.now()}`;
+  let failures = 0;
 
-    setTimeout(refresh, INTERVAL);
+  const tick = () => {
+    img.classList.add("loading");
+    const next = new Image();
+    next.src = `https://staticqbr-prod-ie.gnp.cloud.virginmediatv.ie/image-service/latest/${cid}?w=800&t=${Date.now()}`;
+    next.onload = () => {
+      failures = 0;
+      img.src = next.src;
+      img.classList.remove("loading");
+      wrap.classList.remove("dead");
+      setTimeout(tick, INTERVAL);
+    };
+    next.onerror = () => {
+      failures++;
+      img.classList.remove("loading");
+      wrap.classList.add("dead");
+      setTimeout(tick, Math.min(INTERVAL * 2 ** failures, 300_000));
+    };
   };
-  refresh();
+
+  tick();
 }
 </script>
 </body>
