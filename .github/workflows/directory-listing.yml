@@ -9,7 +9,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          ref: dummy-data    #checkout different branch
+          ref: main    #checkout different branch
 
 
       - name: Delete existing directory listings
