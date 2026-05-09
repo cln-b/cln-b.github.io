@@ -15,17 +15,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install tidy
+      - name: Install xmllint
         run: sudo apt-get install -y libxml2-utils
 
       - name: Fetch Virgin Media IE
         run: |
           mkdir -p "scraper/Virgin IE"
-          timestamp=$(date '+%Y-%m-%d_%H%M%S')
-          tmp="scraper/Virgin IE/TV360_${timestamp}.json"
+          tmp=$(mktemp)
+
           curl -s 'https://spark-prod-ie.gnp.cloud.virginmediatv.ie/eng/web/linear-service/v1/channels?cityId=131&language=en&productClass=Orion-DASH' | jq . > "$tmp"
-          crc=$(cksum < "$tmp" | awk '{print $1}')
-          mv "$tmp" "scraper/Virgin IE/TV360_${timestamp}_($crc).json"
+
+          new_crc=$(cksum < "$tmp" | awk '{print $1}')
+          latest=$(ls -1 scraper/Virgin\ IE/*.xml 2>/dev/null | sort | tail -n1)
+          if [ -n "$latest" ]; then
+            if cmp -s "$tmp" "$latest"; then
+              echo "No changes detected"
+              rm "$tmp"
+              exit 0
+            fi
+          fi
+
+          timestamp=$(date '+%Y-%m-%d_%H%M%S')
+          mv "$tmp" "scraper/Virgin IE/TV360_${timestamp}_(${new_crc}).json"
 
       - name: Fetch Virgin Media UK
         run: |
@@ -39,18 +50,26 @@ jobs:
       - name: Fetch DVB-I
         run: |
           mkdir -p "scraper/DVB-I"
-          timestamp=$(date '+%Y-%m-%d_%H%M%S')
-          tmp="scraper/DVB-I/DVB-I_${timestamp}.xml"
-          
+          tmp=$(mktemp)
+
           curl -s 'https://dvbipoc.private.saorview.ie/dvb-i/api/serviceList/saorview?image_variant=16x9_colour' -o "$tmp"
-          
           sed -i -E 's/<!--Elapsed time: [0-9]+\.[0-9A-Za-z]*-*[0-9A-Za-z]*-->//g' "$tmp"
-          
           xmllint --format "$tmp" -o "$tmp"
-          
-          crc=$(cksum < "$tmp" | awk '{print $1}')
-          mv "$tmp" "scraper/DVB-I/DVB-I_${timestamp}_($crc).xml"
-      
+
+          new_crc=$(cksum < "$tmp" | awk '{print $1}')
+          latest=$(ls -1 scraper/DVB-I/*.xml 2>/dev/null | sort | tail -n1)
+          if [ -n "$latest" ]; then
+            old_crc=$(cksum < "$latest" | awk '{print $1}')
+            if [ "$new_crc" = "$old_crc" ]; then
+              echo "No changes detected"
+              rm "$tmp"
+              exit 0
+            fi
+          fi
+
+          timestamp=$(date '+%Y-%m-%d_%H%M%S')
+          mv "$tmp" "scraper/DVB-I/DVB-I_${timestamp}_(${new_crc}).xml"
+
       - name: Fetch Freely variants
         run: |
           mkdir -p "scraper/Freely/Manchester" "scraper/Freely/NI" "scraper/Freely/Scotland" "scraper/Freely/Wales"
