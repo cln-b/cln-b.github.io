@@ -1,7 +1,6 @@
 name: directory-listing
 
 on:
-  push:
   workflow_dispatch:
 
 permissions:
