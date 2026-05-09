@@ -1,43 +1,35 @@
 name: directory-listing
+
 on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   pages-directory-listing:
     runs-on: ubuntu-latest
-    name: Directory Listings Index
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          ref: main    #checkout different branch
+      - uses: actions/checkout@v4
 
+      - name: Delete directory listings
+        run: rm -rf **/index.html
+        working-directory: scraper
 
-      - name: Generate new directory listings
+      - name: Generate directory listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
-          FOLDER: scraper      #directory to generate index
+          FOLDER: scraper
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3.0.1
-        with:
-          path: '.'      # upload generated folder
-  
-  deploy:
-    needs: pages-directory-listing
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+      - name: Commit files
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
 
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+          git add scraper/
 
-    # Specify runner + deployment step
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4.0.0
+          git diff --cached --quiet || git commit -m "Update scraper listing"
+
+          git push
