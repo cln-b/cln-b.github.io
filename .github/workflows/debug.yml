@@ -1,0 +1,51 @@
+name: channel list scraper
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    - cron: "59 23 * * *"
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install xmllint
+        run: sudo apt-get install -y libxml2-utils
+
+      - name: Fetch DVB-I
+        run: |
+          mkdir -p "scraper/DVB-I"
+          tmp=$(mktemp)
+
+          curl -s 'https://dvbipoc.private.saorview.ie/dvb-i/api/serviceList/saorview?image_variant=16x9_colour' -o "$tmp"
+          sed -i -E 's/<!--Elapsed time: [0-9]+\.[0-9A-Za-z]*-*[0-9A-Za-z]*-->//g' "$tmp"
+          xmllint --format "$tmp" -o "$tmp"
+
+          latest=$(ls -t scraper/DVB-I/*.xml 2>/dev/null | head -n1)
+
+          echo "TMP FILE:"
+          cksum < "$tmp"
+
+          echo "LATEST FILE: $latest"
+          cksum < "$latest"
+
+          if cmp -s "$tmp" "$latest"; then
+            echo "FILES IDENTICAL"
+            rm "$tmp"
+            exit 0
+          else
+            echo "FILES DIFFER"
+          fi
+
+           new_crc=$(cksum < "$tmp" | awk '{print $1}')
+
+          timestamp=$(date '+%Y-%m-%d_%H%M%S')
+          mv "$tmp" "scraper/DVB-I/DVB-I_${timestamp}_(${new_crc}).xml"
+
+          echo "DVB-I" >> /tmp/changed.txt
