@@ -83,7 +83,7 @@ jobs:
           fi
 
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
-          mv "$tmp" "scraper/Sky DE/Sky DE_${timestamp}_(${new_crc}).json"
+          mv "$tmp" "scraper/Sky DE/Sky_DE_${timestamp}_(${new_crc}).json"
 
           echo "CHANGED=${CHANGED}Sky DE, " >> $GITHUB_ENV
 
