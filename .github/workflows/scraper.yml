@@ -39,7 +39,7 @@ jobs:
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/Virgin IE/TV360_${timestamp}_(${new_crc}).json"
 
-          echo "CHANGED=${CHANGED}Virgin IE," >> $GITHUB_ENV
+          echo "CHANGED=${CHANGED}Virgin IE, " >> $GITHUB_ENV
 
       - name: Fetch Virgin Media UK
         run: |
@@ -62,7 +62,7 @@ jobs:
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/Virgin UK/TV360_${timestamp}_(${new_crc}).json"
 
-          echo "CHANGED=${CHANGED}Virgin UK," >> $GITHUB_ENV
+          echo "CHANGED=${CHANGED}Virgin UK, " >> $GITHUB_ENV
 
       - name: Fetch DVB-I
         run: |
@@ -87,7 +87,7 @@ jobs:
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/DVB-I/DVB-I_${timestamp}_(${new_crc}).xml"
 
-          echo "CHANGED=${CHANGED}DVB-I," >> $GITHUB_ENV
+          echo "CHANGED=${CHANGED}DVB-I, " >> $GITHUB_ENV
 
       - name: Fetch Freely variants
         run: |
@@ -132,7 +132,7 @@ jobs:
           fetch_freely "Wales" "FV-Wal" "64418"
           fetch_freely "Wales" "Freely-Wal" "65010"
 
-          echo "CHANGED=${CHANGED}Freely," >> $GITHUB_ENV
+          echo "CHANGED=${CHANGED}Freely, " >> $GITHUB_ENV
 
       - name: Commit
         run: |
@@ -145,7 +145,7 @@ jobs:
             exit 0
           fi
 
-          changes=$(echo "$CHANGED" | sed 's/, $//')
+          changes=$(echo "$CHANGED" | sed 's/,$//')
 
           git commit -m "Update $changes"
           git push
