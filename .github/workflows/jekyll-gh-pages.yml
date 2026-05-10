@@ -61,10 +61,10 @@ jobs:
 
       - name: Add newest-first sorting
         run: |
-          set -x
+          set -euo pipefail
       
-          SCRIPT=$(cat <<'EOF'
-          <script>
+          find scraper -name 'index.html' | while read -r file; do
+            perl -0pi -e 's@</body>@<script>
           document.addEventListener("DOMContentLoaded", () => {
             const tbody = document.querySelector("tbody");
             if (!tbody) return;
@@ -93,12 +93,7 @@ jobs:
               tbody.appendChild(row);
             }
           });
-          </script>
-          EOF
-          )
-      
-          find scraper -name 'index.html' | while read -r file; do
-            sed -i "/<\/body>/i $SCRIPT" "$file"
+          </script></body>@s' "$file"
           done
 
       - name: Setup Pages
