@@ -15,3 +15,6 @@
 * [Allente](https://docs.google.com/spreadsheets/d/e/2PACX-1vRH75Jx3NPhifqzONHH8RMWxJXxPM2t5nIfXzgJe4qj3hgL21gNIuOnzBDLbSmvpCsYyzitTbf0XgEE/pubhtml?gid=423528232&single=true) (Viasat-branded STBs)
 * [Saorview DVB-I PoC](https://docs.google.com/spreadsheets/d/e/2PACX-1vRH75Jx3NPhifqzONHH8RMWxJXxPM2t5nIfXzgJe4qj3hgL21gNIuOnzBDLbSmvpCsYyzitTbf0XgEE/pubhtml?gid=1407905686&single=true)
 * [Saorview](https://docs.google.com/spreadsheets/d/e/2PACX-1vRH75Jx3NPhifqzONHH8RMWxJXxPM2t5nIfXzgJe4qj3hgL21gNIuOnzBDLbSmvpCsYyzitTbf0XgEE/pubhtml?gid=658137819&single=true) (buggy)
+
+## Channel lists scraper
+* [JSONs and XMLs](https://cln-b.github.io/scraper) (scanned daily)
