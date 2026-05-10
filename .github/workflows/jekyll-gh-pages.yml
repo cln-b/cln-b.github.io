@@ -33,7 +33,6 @@ jobs:
 
       - name: Set mtimes from filenames
         run: |
-          set -x
           find scraper -type f | while read -r file; do
             filename=$(basename "$file")
 
@@ -62,30 +61,45 @@ jobs:
 
       - name: Add newest-first sorting
         run: |
-          cat > /tmp/sort.js << 'EOF'
+          set -x
+      
+          SCRIPT=$(cat <<'EOF'
+          <script>
           document.addEventListener("DOMContentLoaded", () => {
             const tbody = document.querySelector("tbody");
             if (!tbody) return;
       
             const rows = Array.from(tbody.querySelectorAll("tr"));
-            const parentRow = rows.find(r => r.querySelector("a")?.getAttribute("href") === "../");
-            const fileRows = rows.filter(r => r !== parentRow);
+      
+            const parentRow = rows.find(row => {
+              const link = row.querySelector("a");
+              return link && link.getAttribute("href") === "../";
+            });
+      
+            const fileRows = rows.filter(row => row !== parentRow);
       
             fileRows.sort((a, b) => {
               const aDate = a.children[2]?.textContent.trim() || "";
               const bDate = b.children[2]?.textContent.trim() || "";
+      
               return new Date(bDate) - new Date(aDate);
             });
       
             tbody.innerHTML = "";
+      
             if (parentRow) tbody.appendChild(parentRow);
-            fileRows.forEach(r => tbody.appendChild(r));
+      
+            for (const row of fileRows) {
+              tbody.appendChild(row);
+            }
           });
+          </script>
           EOF
+          )
       
           find scraper -name 'index.html' | while read -r file; do
-            sed -i "s|</body>|<script>$(cat /tmp/sort.js)</script></body>|" "$file"
-          done      
+            sed -i "/<\/body>/i $SCRIPT" "$file"
+          done
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
