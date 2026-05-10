@@ -27,17 +27,17 @@ jobs:
 
           curl -s 'https://spark-prod-ie.gnp.cloud.virginmediatv.ie/eng/web/linear-service/v1/channels?cityId=131&language=en&productClass=Orion-DASH' | jq . > "$tmp"
 
-          new_crc=$(cksum < "$tmp" | awk '{print $1}')
-          latest=$(ls -1 scraper/Virgin\ IE/*.json 2>/dev/null | sort | tail -n1)
+          shopt -s nullglob
+          latest=$(printf '%s\n' scraper/Virgin\ IE/*.json | sort | tail -n1)
           if [ -n "$latest" ]; then
-            old_crc=$(cksum < "$latest" | awk '{print $1}')
-            if [ "$new_crc" = "$old_crc" ]; then
+            if cmp -s "$tmp" "$latest"; then
               echo "No changes detected"
-              rm "$tmp"
+              rm -f "$tmp"
               exit 0
             fi
           fi
 
+          new_crc=$(cksum < "$tmp" | awk '{print $1}')
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/Virgin IE/TV360_${timestamp}_(${new_crc}).json"
 
@@ -50,17 +50,17 @@ jobs:
 
           curl -s 'https://spark-prod-gb.gnp.cloud.virgintvgo.virginmedia.com/eng/web/linear-service/v1/channels?cityId=40980&language=en&productClass=Orion-DASH' | jq . > "$tmp"
 
-          new_crc=$(cksum < "$tmp" | awk '{print $1}')
-          latest=$(ls -1 scraper/Virgin\ UK/*.json 2>/dev/null | sort | tail -n1)
+          shopt -s nullglob
+          latest=$(printf '%s\n' scraper/Virgin\ UK/*.json | sort | tail -n1)
           if [ -n "$latest" ]; then
-            old_crc=$(cksum < "$latest" | awk '{print $1}')
-            if [ "$new_crc" = "$old_crc" ]; then
+            if cmp -s "$tmp" "$latest"; then
               echo "No changes detected"
-              rm "$tmp"
+              rm -f "$tmp"
               exit 0
             fi
           fi
 
+          new_crc=$(cksum < "$tmp" | awk '{print $1}')
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/Virgin UK/TV360_${timestamp}_(${new_crc}).json"
 
@@ -79,17 +79,17 @@ jobs:
           sed -E 's/"documentId":"[0-9]+","version":[0-9]+,//g' |
           jq . > "$tmp"
 
-          new_crc=$(cksum < "$tmp" | awk '{print $1}')
-          latest=$(ls -1 scraper/Sky\ DE/*.json 2>/dev/null | sort | tail -n1)
+          shopt -s nullglob
+          latest=$(printf '%s\n' scraper/Sky\ DE/*.json | sort | tail -n1)
           if [ -n "$latest" ]; then
-            old_crc=$(cksum < "$latest" | awk '{print $1}')
-            if [ "$new_crc" = "$old_crc" ]; then
+            if cmp -s "$tmp" "$latest"; then
               echo "No changes detected"
-              rm "$tmp"
+              rm -f "$tmp"
               exit 0
             fi
           fi
 
+          new_crc=$(cksum < "$tmp" | awk '{print $1}')
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/Sky DE/Sky_DE_${timestamp}_(${new_crc}).json"
 
@@ -102,19 +102,22 @@ jobs:
 
           curl -s 'https://dvbipoc.private.saorview.ie/dvb-i/api/serviceList/saorview?image_variant=16x9_colour' -o "$tmp"
           sed -i -E 's/<!--Elapsed time: [0-9]+\.[0-9A-Za-z]*-*[0-9A-Za-z]*-->//g' "$tmp"
-          xmllint --format "$tmp" -o "$tmp"
 
-          new_crc=$(cksum < "$tmp" | awk '{print $1}')
-          latest=$(ls -1 scraper/DVB-I/*.xml 2>/dev/null | sort | tail -n1)
+          formatted=$(mktemp)
+          xmllint --format "$tmp" -o "$formatted"
+          mv "$formatted" "$tmp"
+
+          shopt -s nullglob
+          latest=$(printf '%s\n' scraper/DVB-I/*.xml | sort | tail -n1)
           if [ -n "$latest" ]; then
-            old_crc=$(cksum < "$latest" | awk '{print $1}')
-            if [ "$new_crc" = "$old_crc" ]; then
+            if cmp -s "$tmp" "$latest"; then
               echo "No changes detected"
-              rm "$tmp"
+              rm -f "$tmp"
               exit 0
             fi
           fi
 
+          new_crc=$(cksum < "$tmp" | awk '{print $1}')
           timestamp=$(date '+%Y-%m-%d_%H%M%S')
           mv "$tmp" "scraper/DVB-I/DVB-I_${timestamp}_(${new_crc}).xml"
 
@@ -122,6 +125,8 @@ jobs:
 
       - name: Fetch Freely variants
         run: |
+          freely_changed=0
+
           fetch_freely() {
             region="$1"
             name="$2"
@@ -133,22 +138,23 @@ jobs:
 
             curl -s "https://www.freely.co.uk/api/channel-list?nid=$nid" > "$tmp"
 
-            new_crc=$(cksum < "$tmp" | awk '{print $1}')
-
-            latest=$(ls -1 scraper/Freely/"$region"/"${name}"_*.json 2>/dev/null | sort | tail -n1)
+            shopt -s nullglob
+            latest=$(printf '%s\n' scraper/Freely/"$region"/"${name}"_*.json | sort | tail -n1)
 
             if [ -n "$latest" ]; then
-              old_crc=$(cksum < "$latest" | awk '{print $1}')
-              if [ "$new_crc" = "$old_crc" ]; then
-                echo "No changes detected for $name"
-                rm "$tmp"
-                exit 0
+              if cmp -s "$tmp" "$latest"; then
+                echo "No changes detected"
+                rm -f "$tmp"
+                return
               fi
             fi
 
+            new_crc=$(cksum < "$tmp" | awk '{print $1}')
             timestamp=$(date '+%Y-%m-%d_%H%M%S')
 
             mv "$tmp" "scraper/Freely/$region/${name}_${nid}_${timestamp}_(${new_crc}).json"
+
+            freely_changed=1
           }
 
           fetch_freely "Manchester" "FV-Manc" "64377"
@@ -163,7 +169,9 @@ jobs:
           fetch_freely "Wales" "FV-Wal" "64418"
           fetch_freely "Wales" "Freely-Wal" "65010"
 
-          echo "CHANGED=${CHANGED}Freely, " >> $GITHUB_ENV
+          if [ "$freely_changed" -eq 1 ]; then
+            echo "CHANGED=${CHANGED}Freely, " >> $GITHUB_ENV
+          fi
 
       - name: Commit
         run: |
@@ -176,7 +184,7 @@ jobs:
             exit 0
           fi
 
-          changes=$(echo "$CHANGED" | sed 's/,$//')
+          changes=$(echo "$CHANGED" | sed 's/[, ]*$//')
 
           git commit -m "Update $changes"
           git push
