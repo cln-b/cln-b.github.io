@@ -6,7 +6,7 @@ permissions:
 on:
   schedule:
     - cron: "59 23 * * *"
-    - cron: "0 12 * * *"
+    - cron: "0 2 * * *"
   workflow_dispatch:
 
 jobs:
@@ -140,7 +140,7 @@ jobs:
               if [ "$new_crc" = "$old_crc" ]; then
                 echo "No changes detected for $name"
                 rm "$tmp"
-                return
+                exit 0
               fi
             fi
 
