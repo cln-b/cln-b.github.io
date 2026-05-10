@@ -31,6 +31,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Set mtimes from filenames
+        run: |
+          find scraper -type f | while read -r file; do
+            filename=$(basename "$file")
+
+            datetime=$(printf '%s\n' "$filename" |
+              grep -m1 -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}_[0-9]{6}')
+
+            if [ -n "$datetime" ]; then
+              formatted=$(printf '%s' "$datetime" |
+                sed -E 's/^([0-9]{4})-([0-9]{2})-([0-9]{2})_([0-9]{2})([0-9]{2})([0-9]{2})$/\1-\2-\3 \4:\5:\6/')
+
+              touch -d "$formatted" "$file"
+            else
+              date_part=$(printf '%s\n' "$filename" |
+                grep -m1 -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+
+              if [ -n "$date_part" ]; then
+                touch -d "$date_part 12:00:00" "$file"
+              fi
+            fi
+          done
+
       - name: Generate directory listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
