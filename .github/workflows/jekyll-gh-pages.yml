@@ -6,7 +6,7 @@ on:
   push:
     branches: ["main"]
     paths-ignore:
-      - '.github/workflows/**'
+      - '.github/workflows/scraper.yml'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -33,6 +33,7 @@ jobs:
 
       - name: Set mtimes from filenames
         run: |
+          set -x
           find scraper -type f | while read -r file; do
             filename=$(basename "$file")
 
