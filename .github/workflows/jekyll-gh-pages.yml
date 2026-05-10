@@ -60,6 +60,33 @@ jobs:
         with:
           FOLDER: scraper
 
+      - name: Add newest-first sorting
+        run: |
+          cat > /tmp/sort.js << 'EOF'
+          document.addEventListener("DOMContentLoaded", () => {
+            const tbody = document.querySelector("tbody");
+            if (!tbody) return;
+      
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+            const parentRow = rows.find(r => r.querySelector("a")?.getAttribute("href") === "../");
+            const fileRows = rows.filter(r => r !== parentRow);
+      
+            fileRows.sort((a, b) => {
+              const aDate = a.children[2]?.textContent.trim() || "";
+              const bDate = b.children[2]?.textContent.trim() || "";
+              return new Date(bDate) - new Date(aDate);
+            });
+      
+            tbody.innerHTML = "";
+            if (parentRow) tbody.appendChild(parentRow);
+            fileRows.forEach(r => tbody.appendChild(r));
+          });
+          EOF
+      
+          find scraper -name 'index.html' | while read -r file; do
+            sed -i "s|</body>|<script>$(cat /tmp/sort.js)</script></body>|" "$file"
+          done      
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
