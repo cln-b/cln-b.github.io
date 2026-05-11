@@ -18,21 +18,45 @@
         </style>
         <script>
             const replacements = {
+                "IESVC1014_f": "IESVC1014_f_new",
+                "IESVC1023_f": "IESVC1023_f_new",
+                "IESVC1030_f": "IESVC1030_f_refresh",
+                "IESVC1037_f": "IESVC1037_f_new",
+                "IESVC1040_f": "IESVC1040_f_new",
                 "IESVC1042_f": "IESVC1042_f_new",
-                "IESVC1110_f": "IESVC1110_f_plus",
+                "IESVC1091_f": "IESVC1091_f_new",
+                "IESVC1109_f": "IESVC1109_f_new",
+                "IESVC1110_f": "IESVC1110_f_new", // was IESVC1110_f_plus
                 "IESVC1120_f": "IESVC1120_f_new",
                 "IESVC1128_f": "IESVC1128_f_new",
                 "IESVC1135_f": "IESVC1135_f_new",
+                "IESVC1148_f": "IESVC1148_f_new",
+                "IESVC1151_f": "IESVC1151_f_new",
                 "IESVC1156_f": "IESVC1156_f_new",
                 "IESVC1164_f": "IESVC1164_f_new",
                 "IESVC1168_f": "IESVC1168_f_mix",
+                "IESVC1181_f": "IESVC1181_f_refresh",
                 "IESVC1192_f": "IESVC1192_f_new",
+                "IESVC1210_f": "IESVC1210_f_new",
                 "IESVC1219_f": "IESVC1219_f_new",
                 "IESVC1225_f": "IESVC1225_f_new",
                 "IESVC1226_f": "IESVC1226_f_new",
-                "IESVC1246_f": "IESVC1246_f_plus",
+                "IESVC1229_f": "IESVC1229_f_new",
+                "IESVC1241_f": "IESVC1241_f_new",
+                "IESVC1243_f": "IESVC1243_f_refresh",
+                "IESVC1244_f": "IESVC1244_f_new",
+                "IESVC1246_f": "IESVC1246_f_new", // was IESVC1246_f_plus
                 "IESVC1247_f": "IESVC1247_new",
+                "IESVC1249_f": "IESVC1249_f_new",
+                "IESVC1250_f": "IESVC1250_f_new",
                 "IESVC1251_f": "IESVC1251_new",
+                "IESVC1253_f": "IESVC1253_f_new",
+                "IESVC1256_f": "IESVC1256_f_new",
+                "IESVC1257_f": "IESVC1257_f_new",
+                "IESVC1259_f": "IESVC1259_f_new",
+                "IESVC1290_f": "IESVC1290_f_new",
+                "IESVC1302_f": "IESVC1302_f_1",
+                "IESVC1303_f": "IESVC1303_f_1",
                 "IESVC1307_f": "IESVC1307_TNT",
                 "IESVC1308_f": "IESVC1308_TNT",
                 "IESVC1309_f": "IESVC1309_TNT",
@@ -40,51 +64,53 @@
                 "IESVC1311_f": "IESVC1311_TNT",
                 "IESVC1312_f": "IESVC1312_TNT",
                 "IESVC1313_f": "IESVC1313_TNT",
-                "IESVC1314_f": "IESVC1314_TNT"
+                "IESVC1314_f": "IESVC1314_TNT",
+                "IESVC1315_f": "IESVC1315_f_new",
+                "IESVC1316_f": "IESVC1316_f_new",
+                "IESVC1346_f": "IESVC1346_f_new",
+                "IESVC1347_f": "IESVC1347_f_new",
+                "IESVC1398_f": "IESVC1398_f_new"
             };
-    
-            let usingNewImages = false;
+
+            function imageUrl(name) {
+                return `https://staticqbr-prod-ie.gnp.cloud.virginmediatv.ie/image-service/ImagesEPG/EventImages/${name}.png`;
+            }
 
             function toggleImages() {
-                document.querySelectorAll("img").forEach(img => {
-                    for (const [oldName, newName] of Object.entries(replacements)) {
-    
-                        if (!usingNewImages && img.src.includes(oldName + ".png")) {
-                            img.src = img.src.replace(oldName, newName);
-                        }
-    
-                        else if (usingNewImages && img.src.includes(newName + ".png")) {
-                            img.src = img.src.replace(newName, oldName);
-                        }
-                    }
+                const btn = document.getElementById("toggleBtn");
+                const loadingOlder = btn.dataset.state === "current";
+
+                document.querySelectorAll("img[data-name]").forEach(img => {
+                    const original = img.dataset.name;
+                    if (!(original in replacements)) return;
+                    img.src = imageUrl(loadingOlder ? original : replacements[original]);
+                    img.dataset.state = loadingOlder ? "older" : "current";
                 });
-    
-                usingNewImages = !usingNewImages;
-    
-                document.getElementById("toggleBtn").textContent =
-                    usingNewImages ? "Restore old images" : "Load new images";
+
+                btn.dataset.state = loadingOlder ? "older" : "current";
+                btn.textContent = loadingOlder ? "Restore current logos" : "Load older logos";
             }
         </script>
     </head>
     <body bgcolor="grey">
-        <div style="height: 25px" class="controls">
-            <button id="toggleBtn" onclick="toggleImages()">Load new images</button>
+        <div style="padding-top:8px;margin-top:-8px; height: 25px; position: sticky; top: 0; z-index: 1;">
+            <button id="toggleBtn" data-state="current" onclick="toggleImages()">
+                Load older logos
+            </button>
         </div>
         <div class="imggrid" id="grid"></div>
         <script>
-            const channels = Array.from({ length: 431 }, (_, i) => {
-                const n = 1000 + i;
-                return { cid: `IESVC${n}`, title: `IESVC${n}` };
-            });
-            
             const grid = document.getElementById("grid");
-            
-            for (const { cid, title } of channels) {
+
+            for (let i = 0; i < 431; i++) {
+                const name = `IESVC${1000 + i}_f`;
                 const img = document.createElement("img");
+                img.dataset.name = name;
+                img.dataset.state = "current";
+                img.src = imageUrl(replacements[name] ?? name);
+                img.alt = '';
+                img.title = name;
                 grid.appendChild(img);
-                img.src = `https://staticqbr-prod-ie.gnp.cloud.virginmediatv.ie/image-service/ImagesEPG/EventImages/${cid}_f.png`;
-                img.title = `${cid}`;
-                img.alt = ``;
             }
         </script>
     </body>
