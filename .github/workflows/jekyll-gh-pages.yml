@@ -56,15 +56,6 @@ jobs:
             fi
           done
 
-      - name: Set folder mtimes
-        run: |
-          find scraper -mindepth 1 -type d | while read -r dir; do
-            newest=$(find "$dir" -type f -printf '%T@\n' | sort -n | tail -1)
-            if [ -n "$newest" ]; then
-              touch -d "@$newest" "$dir"
-            fi
-          done
-
       - name: Generate directory listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
