@@ -183,3 +183,12 @@ jobs:
 
           git commit -m "Update $changes"
           git push
+
+      - name: Trigger
+        if: env.CHANGED != ''
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.action-trigger }}" \
+            -H "Accept: application/vnd.github.+json" \
+            https://api.github.com/repos/cln-b/cln-b.github.io/dispatches \
+            -d '{"event_type":"scraper-updated"}'
