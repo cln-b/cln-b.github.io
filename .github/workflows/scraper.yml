@@ -95,7 +95,7 @@ jobs:
           mkdir -p "scraper/DVB-I"
           tmp=$(mktemp)
 
-          curl -s 'https://dvbipoc.private.saorview.ie/dvb-i/api/serviceList/saorview?image_variant=16x9_colour' -o "$tmp"
+          curl -s 'https://dvbipoc.saorview.ie/dvb-i/api/serviceList/saorview' -o "$tmp"
           sed -i -E 's/<!--Elapsed time: [0-9]+\.[0-9A-Za-z]*-*[0-9A-Za-z]*-->//g' "$tmp"
 
           formatted=$(mktemp)
