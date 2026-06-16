@@ -1,0 +1,1330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceList xmlns="urn:dvb:metadata:servicediscovery:2024" xmlns:mpeg7="urn:tva:mpeg7:2008" xmlns:dvbisd="urn:dvb:metadata:servicediscovery:2024" xmlns:dvbi-types="urn:dvb:metadata:servicediscovery-types:2023" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dvbisd-playlist="urn:dvb:dvbi:servicediscovery-playlist:2019" xmlns:tva="urn:tva:metadata:2024" xmlns:hls="vnd:apple:mpegurl" xmlns:osp="osp" xml:lang="en" xsi:schemaLocation="urn:dvb:metadata:servicediscovery:2024 ../dvbi_v6.0.xsd vnd:apple:mpegurl ../hls-url.xsd" responseStatus="OK" version="1" id="tag:saorview.ie,2024:Saorview">
+  <Name xml:lang="en">Saorview</Name>
+  <ProviderName xml:lang="ga">Saorview</ProviderName>
+  <LanguageList>
+    <Language>en</Language>
+    <Language>ga</Language>
+  </LanguageList>
+  <RelatedMaterial>
+    <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.1"/>
+    <tva:MediaLocator>
+      <tva:MediaUri contentType="image/png">https://dvbipoc.private.saorview.ie/images/database/saorview26/dvb_images/3214/image_default_internal/SAORVIEW_And_192X192.png</tva:MediaUri>
+    </tva:MediaLocator>
+  </RelatedMaterial>
+  <!--Create LCNTableList 2 above merged tables-->
+  <LCNTableList>
+    <LCNTable>
+      <!--2. LCN count 27-->
+      <LCN channelNumber="1" serviceRef="tag:rte.ie,2022:rte_1"/>
+      <LCN channelNumber="2" serviceRef="tag:rte.ie,2022:rte2"/>
+      <LCN channelNumber="3" serviceRef="tag:saorview.ie,2022:virgin-media-1"/>
+      <LCN channelNumber="4" serviceRef="tag:saorview.ie,2022:tg4"/>
+      <LCN channelNumber="5" serviceRef="tag:saorview.ie,2022:virgin-media-2"/>
+      <LCN channelNumber="6" serviceRef="tag:saorview.ie,2022:virgin-media-3"/>
+      <LCN channelNumber="7" serviceRef="tag:saorview.ie,2022:virgin-media-4"/>
+      <LCN channelNumber="8" serviceRef="tag:fta-uk.com,2022:22226"/>
+      <LCN channelNumber="9" serviceRef="tag:saorview.ie,2022:rte-player"/>
+      <LCN channelNumber="10" serviceRef="tag:saorview.ie,2024:TG4webtest"/>
+      <LCN channelNumber="11" serviceRef="tag:rte.ie,2022:rte-one-+1"/>
+      <LCN channelNumber="12" serviceRef="tag:rte.ie,2022:rte2-+1"/>
+      <LCN channelNumber="13" serviceRef="tag:saorview.ie,2026:ARTE"/>
+      <LCN channelNumber="14" serviceRef="tag:saorview.ie,2022:tg4+1"/>
+      <LCN channelNumber="17" serviceRef="tag:rte.ie,2022:rte-jr"/>
+      <LCN channelNumber="18" serviceRef="tag:saorview.ie,2022:cula4"/>
+      <LCN channelNumber="21" serviceRef="tag:rte.ie,2022:rte-news"/>
+      <LCN channelNumber="22" serviceRef="tag:rte.ie,2022:tithe-an-oireachtas"/>
+      <LCN channelNumber="23" serviceRef="tag:saorview.ie,2022:sky-news"/>
+      <LCN channelNumber="29" serviceRef="tag:rte.ie,2022:SV_Info_1"/>
+      <LCN channelNumber="30" serviceRef="tag:rte.ie,2022:SV_Info_2"/>
+      <LCN channelNumber="200" serviceRef="tag:rte.ie,2022:rte-radio-1"/>
+      <LCN channelNumber="202" serviceRef="tag:rte.ie,2022:rte-2FM"/>
+      <LCN channelNumber="203" serviceRef="tag:rte.ie,2022:rte-lyric"/>
+      <LCN channelNumber="204" serviceRef="tag:saorview.ie,2022:rnag"/>
+      <LCN channelNumber="208" serviceRef="tag:rte.ie,2022:rte-gold"/>
+      <LCN channelNumber="210" serviceRef="tag:saorview.ie,2022:radio-maria-ireland"/>
+      <!--2. LCN Range count 1-->
+      <LCNRange start="800" end="6999" priority="1" fillMethod="fillGaps" serviceOrigin="targetBroadcast"/>
+    </LCNTable>
+  </LCNTableList>
+  <ContentGuideSourceList xml:lang="en">
+    <ContentGuideSource CGSID="saorview-cgs-1">
+      <ProviderName xml:lang="en">Saorview</ProviderName>
+      <ScheduleInfoEndpoint contentType="application/xml">
+        <dvbi-types:URI>https://dvbipoc.saorview.ie/dvb-i/api/scheduleInfo/</dvbi-types:URI>
+      </ScheduleInfoEndpoint>
+      <ProgramInfoEndpoint contentType="application/xml">
+        <dvbi-types:URI>https://dvbipoc.saorview.ie/dvb-i/api/programInfo/</dvbi-types:URI>
+      </ProgramInfoEndpoint>
+      <GroupInfoEndpoint contentType="application/xml">
+        <dvbi-types:URI>https://dvbipoc.saorview.ie/dvb-i/api/groupInfo/</dvbi-types:URI>
+      </GroupInfoEndpoint>
+      <MoreEpisodesEndpoint contentType="application/xml">
+        <dvbi-types:URI>https://dvbipoc.saorview.ie/dvb-i/api/moreEpisodes/</dvbi-types:URI>
+      </MoreEpisodesEndpoint>
+    </ContentGuideSource>
+  </ContentGuideSourceList>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte-jr</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/rte-jnr.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2117"/>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ Junior</ServiceName>
+    <ProviderName xml:lang="ga">RTÉ</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/rte-jnr.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2117</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2024:TG4webtest</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://d1og0s8nlbd0hm.cloudfront.net/images/TG4-Logo-2019.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:LinkedApplicationCS:2019:1.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="application/vnd.dvb.ait+xml">https://dvbipoc.private.saorview.ie/dvb-i/api/ait/ait.php?id=36</tva:MediaUri>
+        </tva:MediaLocator>
+        <tva:AccessibilityAttributes/>
+      </RelatedMaterial>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">TG4 Player</ServiceName>
+    <ProviderName xml:lang="ga">TG4</ProviderName>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte_1</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <DisplayName xml:lang="en">RTÉ One</DisplayName>
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/rte1.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Mono ga: MPEG-1 Audio Layer II main audio</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:2"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">ga</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodec:2022:1.2.12">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>1440</tva:HorizontalSize>
+          <tva:VerticalSize>1080</tva:VerticalSize>
+          <tva:AspectRatio>1.77</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+        <AccessibilityAttributes>
+          <tva:AudioDescriptionAttributes>
+            <tva:AudioAttributes>
+              <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+                <tva:Name>MPEG-1 Audio Layer II - audio description</tva:Name>
+              </tva:Coding>
+              <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+              <tva:Purpose href="urn:tva:metadata:cs:AudioPurposeCS:2007:6"/>
+              <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+              <tva:BitRate>19200</tva:BitRate>
+            </tva:AudioAttributes>
+          </tva:AudioDescriptionAttributes>
+          <tva:SubtitleAttributes>
+            <tva:Carriage href="urn:tva:metadata:cs:SubtitleCarriageCS:2023:2"/>
+            <tva:Coding href="urn:tva:metadata:cs:SubtitleCodingFormatCS:2023:1"/>
+            <tva:Coding href="urn:tva:metadata:cs:SubtitleCodingFormatCS:2023:2.1.2"/>
+            <tva:SubtitleLanguage>en</tva:SubtitleLanguage>
+            <tva:Purpose href="urn:tva:metadata:cs:SubtitlePurposeCS:2023:2"/>
+            <tva:SuitableForTTS>false</tva:SuitableForTTS>
+          </tva:SubtitleAttributes>
+          <tva:SigningAttributes>
+            <tva:SignLanguage>sgn-I</tva:SignLanguage>
+          </tva:SigningAttributes>
+        </AccessibilityAttributes>
+      </ContentAttributes>
+      <AltServiceName>RTÉ One</AltServiceName>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2101"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceInstance priority="2">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/rte1.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:LinkedApplicationCS:2019:1.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="application/vnd.dvb.ait+xml">https://dvbipoc.private.saorview.ie/dvb-i/api/ait/ait.php?id=38</tva:MediaUri>
+        </tva:MediaLocator>
+        <tva:AccessibilityAttributes/>
+      </RelatedMaterial>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ One</ServiceName>
+    <ProviderName xml:lang="ga">RTÉ</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/rte1.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2101</ContentGuideServiceRef>
+    <ProminenceList>
+      <Prominence country="IRL" ranking="1"/>
+    </ProminenceList>
+    <NVOD mode="reference"/>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte2</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/rte2.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Mono ga: MPEG-1 Audio Layer II main audio</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:2"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">ga</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodec:2022:1.2.12">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>1440</tva:HorizontalSize>
+          <tva:VerticalSize>1080</tva:VerticalSize>
+          <tva:AspectRatio>1.77</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1102"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ2</ServiceName>
+    <ProviderName xml:lang="ga">RTÉ</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/rte2.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1102</ContentGuideServiceRef>
+    <NVOD mode="reference"/>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte-news</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1105"/>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ News</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/rte-news.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1105</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte-radio-1</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <ContentAttributes>
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo (radio) en: MPEG-1 Audio Layer II main (radio)</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>12800</tva:BitRate>
+        </AudioAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1226"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceInstance priority="2">
+      <DisplayName xml:lang="en">RTÉ Radio 1</DisplayName>
+      <OtherDeliveryParameters extensionName="vnd.apple.mpegurl" xsi:type="hls:m3u8RefType">
+        <hls:UriBasedLocation contentType="application/vnd.apple.mpegurl">
+          <dvbi-types:URI>https://www.rte.ie/manifests/radio1.m3u8</dvbi-types:URI>
+        </hls:UriBasedLocation>
+      </OtherDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ Radio 1</ServiceName>
+    <ProviderName xml:lang="ga">RTÉ</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/jpeg">https://www.rte.ie/images/002187f0-250.jpg</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear-radio"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1226</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="ga" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:tithe-an-oireachtas</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/svg+xml">https://www.oireachtas.ie/_resources/themes/oireachtas/img/logo.svg</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <AltServiceName>Oireachtas TV</AltServiceName>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1101"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="ga">Tithe an Oireachtais</ServiceName>
+    <ProviderName/>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1101</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte-one-+1</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Mono ga: MPEG-1 Audio Layer II main audio</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:2"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">ga</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2111"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ One +1</ServiceName>
+    <ProviderName xml:lang="ga">RTÉ</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/jpeg">https://img.rasset.ie/0014f6a0-354.jpg</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2111</ContentGuideServiceRef>
+    <NVOD mode="timeshifted" reference="tag:rte.ie,2022:rte-1" offset="PT60M"/>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:sky-news</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/sky-news.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2118"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Sky News</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/sky-news.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2118</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:virgin-media-1</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/virgin1.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <AltServiceName>Virgin Media 1</AltServiceName>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1103"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Virgin Media 1</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/virgin1.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1103</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:virgin-media-2</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/virgin2.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1106"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Virgin Media 2</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/virgin2.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1106</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:virgin-media-3</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/virgin3.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2103"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Virgin Media 3</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/virgin3.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2103</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:virgin-media-4</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/virgin4.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2107"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Virgin Media 4</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/virgin4.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2107</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="ga" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:tg4</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/tg4.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo ga: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">ga</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodec:2022:1.2.12">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>1440</tva:HorizontalSize>
+          <tva:VerticalSize>1080</tva:VerticalSize>
+          <tva:AspectRatio>1.77</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1104"/>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="ga">TG4</ServiceName>
+    <ProviderName xml:lang="ga">TG4</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/tg4.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1104</ContentGuideServiceRef>
+    <NVOD mode="reference"/>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte-2FM</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <ContentAttributes>
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo (radio) en: MPEG-1 Audio Layer II main (radio)</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>12800</tva:BitRate>
+        </AudioAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1227"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ 2FM</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/jpeg">https://www.rte.ie/images/001b5289-250.jpg</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2247</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:radio-maria-ireland</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <ContentAttributes>
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo (radio) en: MPEG-1 Audio Layer II main (radio)</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>12800</tva:BitRate>
+        </AudioAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2241"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Radio Maria Ireland</ServiceName>
+    <ProviderName xml:lang="en">Radio Maria</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://www.radiomaria.ie/wp-content/uploads/2021/12/cropped-cropped-irelandRM_Logo-1.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2241</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:rte-player</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://www.rte.ie/wordpress/wp-content/uploads/splashscreen_web_1280x720.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:LinkedApplicationCS:2019:1.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="application/vnd.dvb.ait+xml">https://dvbipoc.private.saorview.ie/dvb-i/api/ait/ait.php?id=24</tva:MediaUri>
+        </tva:MediaLocator>
+        <tva:AccessibilityAttributes/>
+      </RelatedMaterial>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ Player</ServiceName>
+    <ProviderName xml:lang="ga">RTÉ</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://www.rte.ie/wordpress/wp-content/uploads/splashscreen_web_1280x720.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+  </Service>
+  <Service xml:lang="ga" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte-lyric</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <DisplayName xml:lang="en">Lyric FM</DisplayName>
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/jpeg">https://www.rte.ie/images/001b5288-250.jpg</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo (radio) en: MPEG-1 Audio Layer II main (radio)</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>12800</tva:BitRate>
+        </AudioAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1228"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="ga">RTÉ Lyric</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/jpeg">https://www.rte.ie/images/001b5288-250.jpg</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1228</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:fta-uk.com,2022:22226</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2108"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Challenge</ServiceName>
+    <ProviderName/>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/challenge-tv.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2108</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte-gold</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/jpeg">https://www.rte.ie/images/001b5286-250.jpg</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo (radio) en: MPEG-1 Audio Layer II main (radio)</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>12800</tva:BitRate>
+        </AudioAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2249"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ Gold</ServiceName>
+    <ProviderName/>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2249</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="ga" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:tg4+1</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/TG4+1_250x150px_website_logo.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Mono ga: MPEG-1 Audio Layer II main audio</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:2"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">ga</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2104"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="ga">TG4 +1</ServiceName>
+    <ProviderName xml:lang="ga">TG4</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/tg4.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2104</ContentGuideServiceRef>
+    <NVOD mode="timeshifted" reference="tag:saorview.ie,2022:tg4" offset="PT60M"/>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:rte2-+1</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <DisplayName xml:lang="en">RTÉ2 +1</DisplayName>
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/jpeg">https://img.rasset.ie/0014f6a1-354.jpg</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo en: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">en</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Mono ga: MPEG-1 Audio Layer II main audio</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:2"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">ga</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2102"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">RTÉ2 +1</ServiceName>
+    <ProviderName xml:lang="ga">RTÉ</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/jpeg">https://img.rasset.ie/0014f6a1-354.jpg</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2102</ContentGuideServiceRef>
+    <NVOD mode="timeshifted" reference="tag:rte.ie,2022:rte2" offset="PT60M"/>
+  </Service>
+  <Service xml:lang="ga" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:rnag</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="1229"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceInstance priority="2">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/jpeg">https://www.rte.ie/images/001b5285-250.jpg</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo (radio) ga: MPEG-1 Audio Layer II main (radio)</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">ga</tva:AudioLanguage>
+          <tva:BitRate>12800</tva:BitRate>
+        </AudioAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1001" serviceId="1229"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="ga">RTÉ Raidió na Gaeltachta</ServiceName>
+    <ProviderName xml:lang="ga">RTÉ</ProviderName>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:1229</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="ga" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2022:cula4</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/cula4_250x150px_website_logo.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <ContentAttributes>
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <!--txp ID: -->
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT - audio description</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:1">en</tva:AudioLanguage>
+          <tva:BitRate>64000</tva:BitRate>
+        </AudioAttributes>
+        <AudioAttributes>
+          <tva:Coding href="urn:mpeg:mpeg7:cs:AudioCodingFormatCS:2001:3.2">
+            <tva:Name>DTT Stereo ga: MPEG-1 Audio Layer II main audio eng</tva:Name>
+          </tva:Coding>
+          <tva:MixType href="urn:mpeg:mpeg7:cs:AudioPresentationCS:2001:3"/>
+          <tva:AudioLanguage purpose="urn:tva:metadata:cs:AudioPurposeCS:2007:6">ga</tva:AudioLanguage>
+          <tva:BitRate>19200</tva:BitRate>
+        </AudioAttributes>
+        <VideoAttributes>
+          <tva:Coding href="urn:dvb:metadata:cs:VideoCodecCS:2021:1.2.9">
+            <tva:Name/>
+          </tva:Coding>
+          <tva:HorizontalSize>720</tva:HorizontalSize>
+          <tva:VerticalSize>576</tva:VerticalSize>
+          <tva:AspectRatio>16:9</tva:AspectRatio>
+          <Colorimetry href="urn:dvb:metadata:cs:ColorimetryCS:2020:1"/>
+        </VideoAttributes>
+      </ContentAttributes>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2106"/>
+        <TargetCountry>IRL</TargetCountry>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="ga">Cúla4</ServiceName>
+    <ProviderName xml:lang="ga">TG4</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://saorview.ie/images/channels/cula4_250x150px_website_logo.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:other"/>
+    <ContentGuideSourceRef>saorview-cgs-1</ContentGuideSourceRef>
+    <ContentGuideServiceRef>tag:saorview.ie,2024:2106</ContentGuideServiceRef>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:saorview.ie,2026:ARTE</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:LinkedApplicationCS:2019:1.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="application/vnd.dvb.ait+xml">https://dvbipoc.private.saorview.ie/dvb-i/api/ait/ait.php?id=31</tva:MediaUri>
+        </tva:MediaLocator>
+        <tva:AccessibilityAttributes/>
+      </RelatedMaterial>
+      <Availability>
+        <Period validFrom="2026-01-01T00:00:00Z" validTo="2027-01-01T00:00:00Z"/>
+      </Availability>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">ARTE</ServiceName>
+    <ProviderName xml:lang="ga">Saorview</ProviderName>
+    <RelatedMaterial>
+      <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+      <tva:MediaLocator>
+        <tva:MediaUri contentType="image/png">https://dvbipoc.private.saorview.ie/images/database/saorview26/dvb_images/3216/image_default_internal/arte_logo_rgb.png</tva:MediaUri>
+      </tva:MediaLocator>
+    </RelatedMaterial>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:SV_Info_1</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <DisplayName xml:lang="en">Saorview Information</DisplayName>
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://dvbipoc.private.saorview.ie/images/database/saorview26/dvb_images/3214/image_default_internal/SAORVIEW_And_192X192.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2120"/>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Saorview Information</ServiceName>
+    <ProviderName xml:lang="ga">Saorview</ProviderName>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+  </Service>
+  <Service xml:lang="en" version="1">
+    <UniqueIdentifier>tag:rte.ie,2022:SV_Info_2</UniqueIdentifier>
+    <ServiceInstance priority="1">
+      <DisplayName xml:lang="en">Saorview Information</DisplayName>
+      <RelatedMaterial>
+        <tva:HowRelated href="urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2"/>
+        <tva:MediaLocator>
+          <tva:MediaUri contentType="image/png">https://dvbipoc.private.saorview.ie/images/database/saorview26/dvb_images/3215/image_default_internal/SAORVIEW_And_192X192_BW.png</tva:MediaUri>
+        </tva:MediaLocator>
+      </RelatedMaterial>
+      <DVBTDeliveryParameters>
+        <DVBTriplet origNetId="8564" tsId="1002" serviceId="2121"/>
+      </DVBTDeliveryParameters>
+    </ServiceInstance>
+    <ServiceName xml:lang="en">Saorview Information</ServiceName>
+    <ProviderName xml:lang="ga">Saorview</ProviderName>
+    <ServiceType href="urn:dvb:metadata:cs:ServiceTypeCS:2019:linear"/>
+  </Service>
+</ServiceList>
