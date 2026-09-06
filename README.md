@@ -1,6 +1,7 @@
 ## Live channel previews
-* [Sky DE](https://cln-b.github.io/previews/sky-de)
 * [Virgin IE](https://cln-b.github.io/previews/virgin-ie)
+* [Sky DE](https://cln-b.github.io/previews/sky-de)
+* [3+ CH](https://cln-b.github.io/previews/ch)
 
 ## Service logos
 * [Sky UK & IE](https://cln-b.github.io/logos/sky)
